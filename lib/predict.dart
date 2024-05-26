@@ -11,22 +11,6 @@ import 'Calc.dart';
 import 'Nearest.dart';
 import 'Home.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: ObjectDetectionScreen(),
-    );
-  }
-}
-
 class ObjectDetectionScreen extends StatefulWidget {
   const ObjectDetectionScreen({super.key});
 
@@ -103,12 +87,12 @@ class _ObjectDetectionScreenState extends State<ObjectDetectionScreen> {
     // Calculate sizes based on screen size
     final buttonPadding = EdgeInsets.symmetric(
       horizontal: screenWidth * 0.1,
-      vertical: screenHeight * 0.02,
+      vertical: screenHeight * 0.03,
     );
     final buttonTextSize = screenWidth * 0.05;
     final appBarTextSize = screenWidth * 0.08;
-    final drawerTextSize = screenWidth * 0.06;
-    final iconSize = screenWidth * 0.1;
+    final drawerTextSize = screenWidth * 0.05;
+    final iconSize = screenWidth * 0.08;
 
     return Scaffold(
       appBar: AppBar(
@@ -122,8 +106,7 @@ class _ObjectDetectionScreenState extends State<ObjectDetectionScreen> {
           IconButton(
             icon: Icon(Icons.home),
             onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => HomeScreen()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeScreen()));
             },
           ),
         ],
@@ -134,27 +117,24 @@ class _ObjectDetectionScreenState extends State<ObjectDetectionScreen> {
         backgroundColor: Colors.red,
         child: ListView(
           children: [
-            Row(
-              children: [
-                Image.asset("images/banzenty.png", width: 100, height: 100),
-              ],
+            DrawerHeader(
+              child: Image.asset("images/banzenty.png", width: screenWidth * 0.25, height: screenWidth * 0.25),
             ),
             ListTile(
               title: Text(
                 "Calculate Fuel",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: drawerTextSize,
+                    fontSize: screenWidth * 0.045,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.calculate,
-                size: iconSize,
+                size: screenWidth * 0.07,
                 color: Colors.white,
               ),
-              onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => calc()));
+              onTap: ()  {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>calc()));
               },
             ),
             ListTile(
@@ -162,17 +142,16 @@ class _ObjectDetectionScreenState extends State<ObjectDetectionScreen> {
                 "Nearest Gas Station",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: drawerTextSize,
+                    fontSize: screenWidth * 0.045,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.ev_station,
-                size: iconSize,
+                size: screenWidth * 0.07,
                 color: Colors.white,
               ),
-              onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => NearestGasStation()));
+              onTap: ()  {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>NearestGasStation()));
               },
             ),
             ListTile(
@@ -180,17 +159,16 @@ class _ObjectDetectionScreenState extends State<ObjectDetectionScreen> {
                 "Maintenance",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: drawerTextSize,
+                    fontSize: screenWidth * 0.045,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.settings,
-                size: iconSize,
+                size: screenWidth * 0.07,
                 color: Colors.white,
               ),
-              onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => CarMaintenance()));
+              onTap: ()  {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CarMaintenance()));
               },
             ),
             ListTile(
@@ -198,17 +176,17 @@ class _ObjectDetectionScreenState extends State<ObjectDetectionScreen> {
                 "Car Brand",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: drawerTextSize,
+                    fontSize: screenWidth * 0.045,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.car_repair,
-                size: iconSize,
+                size: screenWidth * 0.07,
                 color: Colors.white,
               ),
               onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => ObjectDetectionScreen()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => ObjectDetectionScreen()));
               },
             ),
             ListTile(
@@ -216,12 +194,12 @@ class _ObjectDetectionScreenState extends State<ObjectDetectionScreen> {
                 "Logout",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: drawerTextSize,
+                    fontSize: screenWidth * 0.045,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.logout,
-                size: iconSize,
+                size: screenWidth * 0.07,
                 color: Colors.white,
               ),
               onTap: () async {
@@ -253,8 +231,11 @@ class _ObjectDetectionScreenState extends State<ObjectDetectionScreen> {
             ElevatedButton(
               onPressed: _pickImage,
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
+                backgroundColor: Colors.black54, // لون أزرق غامق
                 padding: buttonPadding,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
               ),
               child: Text(
                 'Pick Image from Gallery',

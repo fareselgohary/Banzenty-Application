@@ -19,31 +19,70 @@ class calc extends StatelessWidget {
     final screenWidth = screenSize.width;
     final screenHeight = screenSize.height;
 
-    // Calculate sizes based on screen size
-    final buttonWidth = screenWidth * 0.4;
-    final buttonHeight = screenHeight * 0.1;
-    final buttonFontSize = screenWidth * 0.025;
-    final padding = screenWidth * 0.1;
-    final iconSize = screenWidth * 0.1;
-    final drawerIconSize = screenWidth * 0.07;
-    final drawerTextSize = screenWidth * 0.037;
-    final appBarTitleSize = screenWidth * 0.095;
-    final drawerImageSize = screenWidth * 0.25;
+    final buttonPadding = EdgeInsets.symmetric(
+      horizontal: screenWidth * 0.1,
+      vertical: screenHeight * 0.03,
+    );
+    final buttonTextSize = screenWidth * 0.06;
+
+    final gradientDecoration = BoxDecoration(
+      gradient: LinearGradient(
+        colors: [Color(0xFF1E1E2C), Color(0xFF2A2A40)],
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+      ),
+      borderRadius: BorderRadius.circular(15),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black26,
+          blurRadius: 5,
+          offset: Offset(0, 5),
+        ),
+      ],
+    );
+
+    Widget gradientButton(String text, VoidCallback onPressed) {
+      return Container(
+        margin: EdgeInsets.symmetric(vertical: screenHeight * 0.02),
+        decoration: gradientDecoration,
+        child: ElevatedButton(
+          onPressed: onPressed,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.transparent,
+            shadowColor: Colors.transparent,
+            padding: buttonPadding,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+          ),
+          child: Text(
+            text,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: buttonTextSize,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      );
+    }
 
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.white, size: iconSize),
+        iconTheme: IconThemeData(color: Colors.white, size: screenWidth * 0.08),
         title: Text(
           "Banzenty",
           style: TextStyle(
-              color: Colors.white, fontSize: appBarTitleSize, fontWeight: FontWeight.bold),
+              color: Colors.white, fontSize: screenWidth * 0.08, fontWeight: FontWeight.bold),
         ),
-        actions: [IconButton(
-          icon: Icon(Icons.home),
-          onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeScreen()));
-          },
-        ),],
+        actions: [
+          IconButton(
+            icon: Icon(Icons.home),
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeScreen()));
+            },
+          ),
+        ],
         centerTitle: true,
         backgroundColor: Colors.red,
       ),
@@ -51,23 +90,20 @@ class calc extends StatelessWidget {
         backgroundColor: Colors.red,
         child: ListView(
           children: [
-            Row(
-              children: [
-                Image.asset("images/banzenty.png", width: drawerImageSize, height: drawerImageSize),
-              ],
+            DrawerHeader(
+              child: Image.asset("images/banzenty.png", width: screenWidth * 0.25, height: screenWidth * 0.25),
             ),
-
             ListTile(
               title: Text(
                 "Calculate Fuel",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: drawerTextSize,
+                    fontSize: screenWidth * 0.045,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.calculate,
-                size: drawerIconSize,
+                size: screenWidth * 0.07,
                 color: Colors.white,
               ),
               onTap: ()  {
@@ -79,12 +115,12 @@ class calc extends StatelessWidget {
                 "Nearest Gas Station",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: drawerTextSize,
+                    fontSize: screenWidth * 0.045,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.ev_station,
-                size: drawerIconSize,
+                size: screenWidth * 0.07,
                 color: Colors.white,
               ),
               onTap: ()  {
@@ -96,17 +132,16 @@ class calc extends StatelessWidget {
                 "Maintenance",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: drawerTextSize,
+                    fontSize: screenWidth * 0.045,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.settings,
-                size: drawerIconSize,
+                size: screenWidth * 0.07,
                 color: Colors.white,
               ),
               onTap: ()  {
                 Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CarMaintenance()));
-
               },
             ),
             ListTile(
@@ -114,12 +149,12 @@ class calc extends StatelessWidget {
                 "Car Brand",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: drawerTextSize,
+                    fontSize: screenWidth * 0.045,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.car_repair,
-                size: drawerIconSize,
+                size: screenWidth * 0.07,
                 color: Colors.white,
               ),
               onTap: () {
@@ -132,12 +167,12 @@ class calc extends StatelessWidget {
                 "Logout",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: drawerTextSize,
+                    fontSize: screenWidth * 0.045,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.logout,
-                size: drawerIconSize,
+                size: screenWidth * 0.07,
                 color: Colors.white,
               ),
               onTap: () async {
@@ -146,44 +181,27 @@ class calc extends StatelessWidget {
                     .push(MaterialPageRoute(builder: (context) => Login()));
               },
             ),
-
           ],
         ),
       ),
       body: Center(
         child: Padding(
-          padding: EdgeInsets.all(padding),
+          padding: EdgeInsets.all(screenWidth * 0.1),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SecondPage()));
+              gradientButton(
+                '95',
+                    () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => SecondPage()));
                 },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,
-                  minimumSize: Size(buttonWidth, buttonHeight),
-                ),
-                child: Text(
-                  '95',
-                  style: TextStyle(fontSize: buttonFontSize/0.5, color: Colors.white),
-                ),
               ),
-              SizedBox(height: screenHeight * 0.02),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>FirstPage()));
+              gradientButton(
+                '92',
+                    () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => FirstPage()));
                 },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,
-                  minimumSize: Size(buttonWidth, buttonHeight),
-                ),
-                child: Text(
-                  '92',
-                  style: TextStyle(fontSize: buttonFontSize/0.5, color: Colors.white),
-                ),
               ),
-              SizedBox(height: screenHeight * 0.02),
             ],
           ),
         ),
