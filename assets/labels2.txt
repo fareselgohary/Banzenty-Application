@@ -1,0 +1,15 @@
+0 Chevrolet
+1 Hyundai
+2 Toyota
+3 Nissan
+4 Suzuki
+5 LADA
+6 Mitsubishi
+7 Kia
+8 Renault
+9 Honda
+10 Volkswagen
+11 Ford
+12 BMW
+13 Mercedes
+14 Skoda
