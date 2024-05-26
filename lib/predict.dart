@@ -95,13 +95,28 @@ class _ObjectDetectionScreenState extends State<ObjectDetectionScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // Get the size of the screen
+    final screenSize = MediaQuery.of(context).size;
+    final screenWidth = screenSize.width;
+    final screenHeight = screenSize.height;
+
+    // Calculate sizes based on screen size
+    final buttonPadding = EdgeInsets.symmetric(
+      horizontal: screenWidth * 0.1,
+      vertical: screenHeight * 0.02,
+    );
+    final buttonTextSize = screenWidth * 0.05;
+    final appBarTextSize = screenWidth * 0.08;
+    final drawerTextSize = screenWidth * 0.06;
+    final iconSize = screenWidth * 0.1;
+
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.white, size: 40),
+        iconTheme: IconThemeData(color: Colors.white, size: iconSize),
         title: Text(
           "Banzenty",
           style: TextStyle(
-              color: Colors.white, fontSize: 38, fontWeight: FontWeight.bold),
+              color: Colors.white, fontSize: appBarTextSize, fontWeight: FontWeight.bold),
         ),
         actions: [
           IconButton(
@@ -129,12 +144,12 @@ class _ObjectDetectionScreenState extends State<ObjectDetectionScreen> {
                 "Calculate Fuel",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 25,
+                    fontSize: drawerTextSize,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.calculate,
-                size: 45,
+                size: iconSize,
                 color: Colors.white,
               ),
               onTap: () {
@@ -147,12 +162,12 @@ class _ObjectDetectionScreenState extends State<ObjectDetectionScreen> {
                 "Nearest Gas Station",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 25,
+                    fontSize: drawerTextSize,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.ev_station,
-                size: 45,
+                size: iconSize,
                 color: Colors.white,
               ),
               onTap: () {
@@ -165,12 +180,12 @@ class _ObjectDetectionScreenState extends State<ObjectDetectionScreen> {
                 "Maintenance",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 25,
+                    fontSize: drawerTextSize,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.settings,
-                size: 45,
+                size: iconSize,
                 color: Colors.white,
               ),
               onTap: () {
@@ -183,12 +198,12 @@ class _ObjectDetectionScreenState extends State<ObjectDetectionScreen> {
                 "Car Brand",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 25,
+                    fontSize: drawerTextSize,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.car_repair,
-                size: 45,
+                size: iconSize,
                 color: Colors.white,
               ),
               onTap: () {
@@ -201,12 +216,12 @@ class _ObjectDetectionScreenState extends State<ObjectDetectionScreen> {
                 "Logout",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 25,
+                    fontSize: drawerTextSize,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.logout,
-                size: 45,
+                size: iconSize,
                 color: Colors.white,
               ),
               onTap: () async {
@@ -225,22 +240,32 @@ class _ObjectDetectionScreenState extends State<ObjectDetectionScreen> {
             if (_image != null)
               Image.file(
                 File(_image!.path),
-                height: 200,
-                width: 200,
+                height: screenHeight * 0.4,
+                width: screenWidth * 0.8,
                 fit: BoxFit.cover,
               )
             else
-              const Text('Pick an image to identify'),
-            const SizedBox(height: 50),
+              Text(
+                'Pick an image to identify',
+                style: TextStyle(fontSize: buttonTextSize),
+              ),
+            SizedBox(height: screenHeight * 0.05),
             ElevatedButton(
               onPressed: _pickImage,
-              child: const Text('Pick Image from Gallery'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red,
+                padding: buttonPadding,
+              ),
+              child: Text(
+                'Pick Image from Gallery',
+                style: TextStyle(fontSize: buttonTextSize, color: Colors.white),
+              ),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: screenHeight * 0.02),
             Text(
               result,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(fontSize: buttonTextSize),
             ),
           ],
         ),

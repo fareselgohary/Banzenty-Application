@@ -68,6 +68,14 @@ class _FirstPageState extends State<FirstPage> {
 
   @override
   Widget build(BuildContext context) {
+    // Get the size of the screen
+    final screenSize = MediaQuery.of(context).size;
+    final screenWidth = screenSize.width;
+    final screenHeight = screenSize.height;
+
+    // Calculate padding based on screen size
+    final padding = screenWidth * 0.1;
+
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white, size: 40),
@@ -192,7 +200,7 @@ class _FirstPageState extends State<FirstPage> {
         ),
       ),
       body: Container(
-        padding: EdgeInsets.all(40),
+        padding: EdgeInsets.all(padding),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

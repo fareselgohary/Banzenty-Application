@@ -6,7 +6,7 @@ import 'dart:convert';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:projj/Login.dart';
-import 'SIgnup.dart';
+import 'Signup.dart';
 import 'package:projj/Home.dart';
 import 'package:projj/Car.dart';
 import 'package:projj/Calc.dart';
@@ -76,17 +76,32 @@ class _NearestGasStationState extends State<NearestGasStation> {
 
   @override
   Widget build(BuildContext context) {
+    // Get the size of the screen
+    final screenSize = MediaQuery.of(context).size;
+    final screenWidth = screenSize.width;
+    final screenHeight = screenSize.height;
+
+    // Calculate sizes based on screen size
+    final appBarTextSize = screenWidth * 0.05;
+    final drawerTextSize = screenWidth * 0.05;
+    final iconSize = screenWidth * 0.08;
+
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.white, size: 40),
-        title: Text('Nearest Gas Station',style: TextStyle(
-            color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
-        actions: [IconButton(
-          icon: Icon(Icons.home),
-          onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeScreen()));
-          },
-        ),],
+        iconTheme: IconThemeData(color: Colors.white, size: iconSize),
+        title: Text(
+          'Nearest Gas Station',
+          style: TextStyle(
+              color: Colors.white, fontSize: appBarTextSize, fontWeight: FontWeight.bold),
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.home),
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeScreen()));
+            },
+          ),
+        ],
         backgroundColor: Colors.red,
         centerTitle: true,
       ),
@@ -99,18 +114,17 @@ class _NearestGasStationState extends State<NearestGasStation> {
                 Image.asset("images/banzenty.png", width: 100, height: 100),
               ],
             ),
-
             ListTile(
               title: Text(
                 "Calculate Fuel",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 25,
+                    fontSize: drawerTextSize,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.calculate,
-                size: 45,
+                size: iconSize,
                 color: Colors.white,
               ),
               onTap: ()  {
@@ -122,12 +136,12 @@ class _NearestGasStationState extends State<NearestGasStation> {
                 "Nearest Gas Station",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 25,
+                    fontSize: drawerTextSize,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.ev_station,
-                size: 45,
+                size: iconSize,
                 color: Colors.white,
               ),
               onTap: ()  {
@@ -139,17 +153,16 @@ class _NearestGasStationState extends State<NearestGasStation> {
                 "Maintenance",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 25,
+                    fontSize: drawerTextSize,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.settings,
-                size: 45,
+                size: iconSize,
                 color: Colors.white,
               ),
               onTap: ()  {
                 Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CarMaintenance()));
-
               },
             ),
             ListTile(
@@ -157,12 +170,12 @@ class _NearestGasStationState extends State<NearestGasStation> {
                 "Car Brand",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 25,
+                    fontSize: drawerTextSize,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.car_repair,
-                size: 45,
+                size: iconSize,
                 color: Colors.white,
               ),
               onTap: () {
@@ -175,12 +188,12 @@ class _NearestGasStationState extends State<NearestGasStation> {
                 "Logout",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 25,
+                    fontSize: drawerTextSize,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.logout,
-                size: 45,
+                size: iconSize,
                 color: Colors.white,
               ),
               onTap: () async {
@@ -189,7 +202,6 @@ class _NearestGasStationState extends State<NearestGasStation> {
                     .push(MaterialPageRoute(builder: (context) => Login()));
               },
             ),
-
           ],
         ),
       ),

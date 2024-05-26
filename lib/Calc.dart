@@ -1,5 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:projj/92.dart';
 import 'package:projj/Login.dart';
 import 'package:projj/Nearest.dart';
@@ -10,16 +10,33 @@ import '95.dart';
 import 'package:projj/Home.dart';
 import 'predict.dart';
 import 'package:projj/Car.dart';
+
 class calc extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // Get the size of the screen
+    final screenSize = MediaQuery.of(context).size;
+    final screenWidth = screenSize.width;
+    final screenHeight = screenSize.height;
+
+    // Calculate sizes based on screen size
+    final buttonWidth = screenWidth * 0.4;
+    final buttonHeight = screenHeight * 0.1;
+    final buttonFontSize = screenWidth * 0.025;
+    final padding = screenWidth * 0.1;
+    final iconSize = screenWidth * 0.1;
+    final drawerIconSize = screenWidth * 0.07;
+    final drawerTextSize = screenWidth * 0.037;
+    final appBarTitleSize = screenWidth * 0.095;
+    final drawerImageSize = screenWidth * 0.25;
+
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.white, size: 40),
+        iconTheme: IconThemeData(color: Colors.white, size: iconSize),
         title: Text(
           "Banzenty",
           style: TextStyle(
-              color: Colors.white, fontSize: 38, fontWeight: FontWeight.bold),
+              color: Colors.white, fontSize: appBarTitleSize, fontWeight: FontWeight.bold),
         ),
         actions: [IconButton(
           icon: Icon(Icons.home),
@@ -36,7 +53,7 @@ class calc extends StatelessWidget {
           children: [
             Row(
               children: [
-                Image.asset("images/banzenty.png", width: 100, height: 100),
+                Image.asset("images/banzenty.png", width: drawerImageSize, height: drawerImageSize),
               ],
             ),
 
@@ -45,12 +62,12 @@ class calc extends StatelessWidget {
                 "Calculate Fuel",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 25,
+                    fontSize: drawerTextSize,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.calculate,
-                size: 45,
+                size: drawerIconSize,
                 color: Colors.white,
               ),
               onTap: ()  {
@@ -62,12 +79,12 @@ class calc extends StatelessWidget {
                 "Nearest Gas Station",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 25,
+                    fontSize: drawerTextSize,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.ev_station,
-                size: 45,
+                size: drawerIconSize,
                 color: Colors.white,
               ),
               onTap: ()  {
@@ -79,12 +96,12 @@ class calc extends StatelessWidget {
                 "Maintenance",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 25,
+                    fontSize: drawerTextSize,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.settings,
-                size: 45,
+                size: drawerIconSize,
                 color: Colors.white,
               ),
               onTap: ()  {
@@ -97,12 +114,12 @@ class calc extends StatelessWidget {
                 "Car Brand",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 25,
+                    fontSize: drawerTextSize,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.car_repair,
-                size: 45,
+                size: drawerIconSize,
                 color: Colors.white,
               ),
               onTap: () {
@@ -115,12 +132,12 @@ class calc extends StatelessWidget {
                 "Logout",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 25,
+                    fontSize: drawerTextSize,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.logout,
-                size: 45,
+                size: drawerIconSize,
                 color: Colors.white,
               ),
               onTap: () async {
@@ -135,7 +152,7 @@ class calc extends StatelessWidget {
       ),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(80),
+          padding: EdgeInsets.all(padding),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -144,29 +161,29 @@ class calc extends StatelessWidget {
                   Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SecondPage()));
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red, // Button color
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20), // Button size
+                  backgroundColor: Colors.red,
+                  minimumSize: Size(buttonWidth, buttonHeight),
                 ),
                 child: Text(
                   '95',
-                  style: TextStyle(fontSize: 20, color: Colors.white),
+                  style: TextStyle(fontSize: buttonFontSize/0.5, color: Colors.white),
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: screenHeight * 0.02),
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(builder: (context)=>FirstPage()));
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red, // Button color
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20), // Button size
+                  backgroundColor: Colors.red,
+                  minimumSize: Size(buttonWidth, buttonHeight),
                 ),
                 child: Text(
                   '92',
-                  style: TextStyle(fontSize: 20, color: Colors.white),
+                  style: TextStyle(fontSize: buttonFontSize/0.5, color: Colors.white),
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: screenHeight * 0.02),
             ],
           ),
         ),

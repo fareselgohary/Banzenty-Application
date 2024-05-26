@@ -68,23 +68,34 @@ class _SecondPageState extends State<SecondPage> {
 
   @override
   Widget build(BuildContext context) {
+    // Get the size of the screen
+    final screenSize = MediaQuery.of(context).size;
+    final screenWidth = screenSize.width;
+    final screenHeight = screenSize.height;
+
+    // Calculate padding based on screen size
+    final padding = screenWidth * 0.1;
+
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white, size: 40),
         title: Text(
           "Banzenty",
           style: TextStyle(
-              fontSize: 38,
-              fontWeight: FontWeight.bold,
-              color: Colors.white
+            fontSize: 38,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
           ),
         ),
-        actions: [IconButton(
-          icon: Icon(Icons.home),
-          onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeScreen()));
-          },
-        ),],
+        actions: [
+          IconButton(
+            icon: Icon(Icons.home),
+            onPressed: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => HomeScreen()));
+            },
+          ),
+        ],
         centerTitle: true,
         backgroundColor: Colors.red,
       ),
@@ -102,61 +113,67 @@ class _SecondPageState extends State<SecondPage> {
               title: Text(
                 "Calculate Fuel",
                 style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold),
+                  color: Colors.white,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               leading: Icon(
                 Icons.calculate,
                 size: 45,
                 color: Colors.white,
               ),
-              onTap: ()  {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>calc()));
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => calc()));
               },
             ),
             ListTile(
               title: Text(
                 "Nearest Gas Station",
                 style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold),
+                  color: Colors.white,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               leading: Icon(
                 Icons.ev_station,
                 size: 45,
                 color: Colors.white,
               ),
-              onTap: ()  {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>NearestGasStation()));
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => NearestGasStation()));
               },
             ),
             ListTile(
               title: Text(
                 "Maintenance",
                 style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold),
+                  color: Colors.white,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               leading: Icon(
                 Icons.settings,
                 size: 45,
                 color: Colors.white,
               ),
-              onTap: ()  {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CarMaintenance()));
-
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => CarMaintenance()));
               },
             ),
             ListTile(
               title: Text(
                 "Car Brand",
                 style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold),
+                  color: Colors.white,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               leading: Icon(
                 Icons.car_repair,
@@ -164,17 +181,18 @@ class _SecondPageState extends State<SecondPage> {
                 color: Colors.white,
               ),
               onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => ObjectDetectionScreen()));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ObjectDetectionScreen()));
               },
             ),
             ListTile(
               title: Text(
                 "Logout",
                 style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold),
+                  color: Colors.white,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               leading: Icon(
                 Icons.logout,
@@ -187,12 +205,11 @@ class _SecondPageState extends State<SecondPage> {
                     .push(MaterialPageRoute(builder: (context) => Login()));
               },
             ),
-
           ],
         ),
       ),
       body: Container(
-        padding: EdgeInsets.all(40),
+        padding: EdgeInsets.all(padding),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

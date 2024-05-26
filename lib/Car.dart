@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; // Import for TextInputFormatter
+import 'package:flutter/services.dart';
 import 'package:projj/Login.dart';
 import 'main.dart';
 import 'Signup.dart';
@@ -50,23 +50,38 @@ class _CarMaintenanceState extends State<CarMaintenance> {
 
   @override
   Widget build(BuildContext context) {
+    // Get the size of the screen
+    final screenSize = MediaQuery.of(context).size;
+    final screenWidth = screenSize.width;
+    final screenHeight = screenSize.height;
+
+    // Calculate sizes based on screen size
+    final appBarTextSize = screenWidth * 0.05;
+    final drawerTextSize = screenWidth * 0.05;
+    final iconSize = screenWidth * 0.08;
+    final inputTextSize = screenWidth * 0.045;
+    final bodyPadding = screenWidth * 0.1;
+    final spacing = screenHeight * 0.02;
+
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.white, size: 40),
+        iconTheme: IconThemeData(color: Colors.white, size: iconSize),
         title: Text(
           "Banzenty",
           style: TextStyle(
-              fontSize: 38,
+              fontSize: appBarTextSize,
               fontWeight: FontWeight.bold,
               color: Colors.white
           ),
         ),
-        actions: [IconButton(
-          icon: Icon(Icons.home),
-          onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeScreen()));
-          },
-        ),],
+        actions: [
+          IconButton(
+            icon: Icon(Icons.home),
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeScreen()));
+            },
+          ),
+        ],
         centerTitle: true,
         backgroundColor: Colors.red,
       ),
@@ -79,18 +94,17 @@ class _CarMaintenanceState extends State<CarMaintenance> {
                 Image.asset("images/banzenty.png", width: 100, height: 100),
               ],
             ),
-
             ListTile(
               title: Text(
                 "Calculate Fuel",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 25,
+                    fontSize: drawerTextSize,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.calculate,
-                size: 45,
+                size: iconSize,
                 color: Colors.white,
               ),
               onTap: ()  {
@@ -102,12 +116,12 @@ class _CarMaintenanceState extends State<CarMaintenance> {
                 "Nearest Gas Station",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 25,
+                    fontSize: drawerTextSize,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.ev_station,
-                size: 45,
+                size: iconSize,
                 color: Colors.white,
               ),
               onTap: ()  {
@@ -119,17 +133,16 @@ class _CarMaintenanceState extends State<CarMaintenance> {
                 "Maintenance",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 25,
+                    fontSize: drawerTextSize,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.settings,
-                size: 45,
+                size: iconSize,
                 color: Colors.white,
               ),
               onTap: ()  {
                 Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CarMaintenance()));
-
               },
             ),
             ListTile(
@@ -137,12 +150,12 @@ class _CarMaintenanceState extends State<CarMaintenance> {
                 "Car Brand",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 25,
+                    fontSize: drawerTextSize,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.car_repair,
-                size: 45,
+                size: iconSize,
                 color: Colors.white,
               ),
               onTap: () {
@@ -155,12 +168,12 @@ class _CarMaintenanceState extends State<CarMaintenance> {
                 "Logout",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 25,
+                    fontSize: drawerTextSize,
                     fontWeight: FontWeight.bold),
               ),
               leading: Icon(
                 Icons.logout,
-                size: 45,
+                size: iconSize,
                 color: Colors.white,
               ),
               onTap: () async {
@@ -169,12 +182,11 @@ class _CarMaintenanceState extends State<CarMaintenance> {
                     .push(MaterialPageRoute(builder: (context) => Login()));
               },
             ),
-
           ],
         ),
       ),
       body: Container(
-        padding: EdgeInsets.all(40),
+        padding: EdgeInsets.all(bodyPadding),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -182,11 +194,11 @@ class _CarMaintenanceState extends State<CarMaintenance> {
               'Kilometers Driven',
               style: TextStyle(
                 color: Colors.red,
-                fontSize: 25,
+                fontSize: inputTextSize,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: spacing),
             TextField(
               controller: kmController,
               keyboardType: TextInputType.numberWithOptions(decimal: true),
@@ -197,24 +209,24 @@ class _CarMaintenanceState extends State<CarMaintenance> {
                 border: OutlineInputBorder(),
               ),
             ),
-            SizedBox(height: 30),
+            SizedBox(height: spacing * 1.5),
             Text(
               'Kilometers Remaining until next maintenance',
               style: TextStyle(
                 color: Colors.red,
-                fontSize: 25,
+                fontSize: inputTextSize,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: spacing),
             Text(
               kmRemaining.toStringAsFixed(0),
               style: TextStyle(
-                fontSize: 25,
+                fontSize: inputTextSize,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: spacing),
           ],
         ),
       ),
