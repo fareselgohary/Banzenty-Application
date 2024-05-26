@@ -19,38 +19,6 @@ Future<void> main() async {
   );
   runApp(const MyApp());
 }
-Future<UserCredential?> signInWithFacebook(BuildContext context) async {
-  try {
-    // Log in with Facebook and obtain a LoginResult
-    final LoginResult result = await FacebookAuth.instance.login();
-
-    // Check if login was successful
-    if (result.status == LoginStatus.success) {
-      // Get the access token from the LoginResult
-      final AccessToken? accessToken = result.accessToken;
-
-      if (accessToken != null) {
-        // Use the access token to sign in with Firebase
-        final OAuthCredential credential = FacebookAuthProvider.credential(accessToken.token);
-        final UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeScreen()));
-        return userCredential;
-      } else {
-        // Handle case where access token is null
-        print('Facebook login failed: access token is null');
-        return null;
-      }
-    } else {
-      // Handle case where login status is not success (e.g., user cancelled login)
-      print('Facebook login cancelled or failed: ${result.status}');
-      return null;
-    }
-  } catch (e) {
-    // Handle other exceptions
-    print('Error signing in with Facebook: $e');
-    return null;
-  }
-}
 
 
 
