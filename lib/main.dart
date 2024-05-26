@@ -94,7 +94,7 @@ class SimpleProj extends StatelessWidget {
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(screenWidth * 0.02)))
                 ),
               ),
-              SizedBox(height: screenHeight * 0.03), // تحديد المسافة بين الزر الأول والزر الثاني
+              SizedBox(height: screenHeight * 0.03),
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(builder: (context) => Signup()));
