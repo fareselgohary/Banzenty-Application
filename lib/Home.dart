@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
     // تدرج لوني جديد للأزرار مع اللون الأزرق
     final gradientDecoration = BoxDecoration(
       gradient: LinearGradient(
-        colors: [Color(0xFF1E1E2C), Color(0xFF2A2A40)], // لونين من الأزرق الداكن
+        colors: [Color(0xFF1E1E2C), Color(0xFF2A2A40)],
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
       ),
@@ -56,7 +56,7 @@ class HomeScreen extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: buttonTextSize,
-              color: Colors.white, // لون النص أبيض
+              color: Colors.white,
             ),
           ),
         ),
