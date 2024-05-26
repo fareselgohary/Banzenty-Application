@@ -28,6 +28,9 @@ class Signup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -35,14 +38,14 @@ class Signup extends StatelessWidget {
           title: Text(
             "Banzenty",
             style: TextStyle(
-                color: Colors.white, fontSize: 38, fontWeight: FontWeight.bold),
+                color: Colors.white, fontSize: screenWidth * 0.1, fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
           backgroundColor: Colors.red,
         ),
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(vertical: 120, horizontal: 30),
+          padding: EdgeInsets.symmetric(vertical: screenHeight * 0.12, horizontal: screenWidth * 0.1),
           child: Center(
             child: Form(
               key: formstate2,
@@ -74,29 +77,29 @@ class Signup extends StatelessWidget {
                     child: Text(
                       "Sign Up",
                       style: TextStyle(
-                          fontSize: 40,
+                          fontSize: screenWidth * 0.08,
                           color: Colors.white,
                           fontFamily: 'RationalTextDEMO-SemiBold'),
                     ),
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(screenWidth * 0.04),
                       ),
                       shadowColor: Colors.black,
                       elevation: 10,
                       backgroundColor: Colors.red,
-                      fixedSize: Size(230, 60),
+                      fixedSize: Size(screenWidth * 0.6, screenHeight * 0.1),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: screenHeight * 0.02),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: 5),
+                      padding: EdgeInsets.symmetric(vertical: screenHeight * 0.01),
                       child: Text(
                         "Email Address",
                         style: TextStyle(
-                            fontSize: 20,
+                            fontSize: screenWidth * 0.04,
                             fontFamily: 'RationalTextDEMO-SemiBold'),
                       ),
                     ),
@@ -113,23 +116,23 @@ class Signup extends StatelessWidget {
                       hintText: "Type your email",
                       border: UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.black),
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(screenWidth * 0.03),
                       ),
                       filled: true,
                       fillColor: Colors.grey.withOpacity(0.2),
                       contentPadding: EdgeInsets.symmetric(
-                          vertical: 12, horizontal: 16),
+                          vertical: screenHeight * 0.02, horizontal: screenWidth * 0.03),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: screenHeight * 0.02),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: 5),
+                      padding: EdgeInsets.symmetric(vertical: screenHeight * 0.01),
                       child: Text(
                         "Password",
                         style: TextStyle(
-                            fontSize: 20,
+                            fontSize: screenWidth * 0.04,
                             fontFamily: 'RationalTextDEMO-SemiBold'),
                       ),
                     ),
@@ -148,12 +151,12 @@ class Signup extends StatelessWidget {
                       hintText: "8 Characters",
                       border: UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.black),
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(screenWidth * 0.03),
                       ),
                       filled: true,
                       fillColor: Colors.grey.withOpacity(0.2),
                       contentPadding: EdgeInsets.symmetric(
-                          vertical: 12, horizontal: 16),
+                          vertical: screenHeight * 0.02, horizontal: screenWidth * 0.03),
                     ),
                     obscureText: true,
                   ),

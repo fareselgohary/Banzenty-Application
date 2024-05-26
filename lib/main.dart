@@ -40,12 +40,17 @@ class SimpleProj extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Get the size of the screen
+    final screenSize = MediaQuery.of(context).size;
+    final screenWidth = screenSize.width;
+    final screenHeight = screenSize.height;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
           "Banzenty",
           style: TextStyle(
-              color: Colors.white, fontSize: 38, fontWeight: FontWeight.bold),
+              color: Colors.white, fontSize: screenWidth *0.08, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
         backgroundColor: Colors.red,
@@ -63,41 +68,42 @@ class SimpleProj extends StatelessWidget {
                   child: Image.asset(
                     "images/banzenty.png",
                     alignment: Alignment.center,
+                    width: screenWidth * 0.8,
                   ),
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: screenHeight * 0.02,
               ),
               Text(
                 "Welcome",
                 style: TextStyle(
-                    fontSize: 40,
+                    fontSize: screenWidth * 0.1,
                     fontWeight: FontWeight.bold,
                     color: Colors.red),
               ),
-              SizedBox(height: 15,),
+              SizedBox(height: screenHeight * 0.03),
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(builder: (context) => Login()));
                 },
-                child: Text("Login",style: TextStyle(color: Colors.white,fontSize: 20),),
+                child: Text("Login",style: TextStyle(color: Colors.white,fontSize: screenWidth * 0.05),),
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.red),
-                    padding: MaterialStateProperty.all(EdgeInsets.all(12)),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)))
+                    padding: MaterialStateProperty.all(EdgeInsets.all(screenWidth * 0.05)),
+                    shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(screenWidth * 0.02)))
                 ),
               ),
-              SizedBox(height: 15),
+              SizedBox(height: screenHeight * 0.03), // تحديد المسافة بين الزر الأول والزر الثاني
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(builder: (context) => Signup()));
                 },
-                child: Text("Signup",style: TextStyle(color: Colors.white,fontSize: 20),),
+                child: Text("Signup",style: TextStyle(color: Colors.white,fontSize: screenWidth * 0.05),),
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.red),
-                    padding: MaterialStateProperty.all(EdgeInsets.all(12)),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)))
+                    padding: MaterialStateProperty.all(EdgeInsets.all(screenWidth * 0.05)),
+                    shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(screenWidth * 0.02)))
                 ),
               )
             ],
