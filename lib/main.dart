@@ -89,7 +89,7 @@ class SimpleProj extends StatelessWidget {
                 },
                 child: Text("Login",style: TextStyle(color: Colors.white,fontSize: screenWidth * 0.05),),
                 style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.red),
+                    backgroundColor: MaterialStateProperty.all(Color(0xFF3D5467)),
                     padding: MaterialStateProperty.all(EdgeInsets.all(screenWidth * 0.05)),
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(screenWidth * 0.02)))
                 ),
@@ -101,7 +101,7 @@ class SimpleProj extends StatelessWidget {
                 },
                 child: Text("Signup",style: TextStyle(color: Colors.white,fontSize: screenWidth * 0.05),),
                 style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.red),
+                    backgroundColor: MaterialStateProperty.all(Color(0xFF3D5467)),
                     padding: MaterialStateProperty.all(EdgeInsets.all(screenWidth * 0.05)),
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(screenWidth * 0.02)))
                 ),

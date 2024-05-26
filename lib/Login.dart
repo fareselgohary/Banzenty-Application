@@ -88,7 +88,7 @@ class Login extends StatelessWidget {
                       ),
                       shadowColor: Colors.black,
                       elevation: 10,
-                      backgroundColor: Colors.red,
+                      backgroundColor: Color(0xFF3D5467),
                       fixedSize: Size(screenWidth * 0.7, screenHeight * 0.1),
                     ),
                   ),
@@ -100,6 +100,7 @@ class Login extends StatelessWidget {
                       child: Text(
                         "Email Address",
                         style: TextStyle(
+                        color: Colors.red,
                             fontSize: screenWidth * 0.04,
                             fontFamily: 'RationalTextDEMO-SemiBold'),
                       ),
@@ -132,6 +133,7 @@ class Login extends StatelessWidget {
                       child: Text(
                         "Password",
                         style: TextStyle(
+                          color: Colors.red,
                             fontSize: screenWidth * 0.04,
                             fontFamily: 'RationalTextDEMO-SemiBold'),
                       ),
@@ -195,7 +197,7 @@ class Login extends StatelessWidget {
                       ),
                       shadowColor: Colors.black,
                       elevation: 10,
-                      backgroundColor: Colors.red,
+                      backgroundColor:Color(0xFF3D5467),
                       fixedSize: Size(screenWidth * 0.5, screenHeight * 0.1),
                     ),
                   ),

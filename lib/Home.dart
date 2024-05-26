@@ -21,26 +21,21 @@ class HomeScreen extends StatelessWidget {
     );
     final buttonTextSize = screenWidth * 0.045;
 
-    // تدرج لوني جديد للأزرار مع اللون الأزرق
-    final gradientDecoration = BoxDecoration(
-      gradient: LinearGradient(
-        colors: [Color(0xFF1E1E2C), Color(0xFF2A2A40)],
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-      ),
-      borderRadius: BorderRadius.circular(12),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.black26,
-          blurRadius: 5,
-          offset: Offset(0, 5),
-        ),
-      ],
-    );
+    final buttonColor = Color(0xFF8AA29E);
 
-    Widget gradientButton(String text, VoidCallback onPressed) {
+    Widget flatButton(String text, VoidCallback onPressed) {
       return Container(
-        decoration: gradientDecoration,
+        decoration: BoxDecoration(
+          color: buttonColor,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 5,
+              offset: Offset(0, 5),
+            ),
+          ],
+        ),
         child: ElevatedButton(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
@@ -210,7 +205,7 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                gradientButton(
+                flatButton(
                   'Find Nearest\nGas Station',
                       () {
                     Navigator.of(context).push(
@@ -219,7 +214,7 @@ class HomeScreen extends StatelessWidget {
                   },
                 ),
                 SizedBox(height: 20),
-                gradientButton(
+                flatButton(
                   'Calculate Fuel\nPurchase',
                       () {
                     Navigator.of(context).push(
@@ -228,7 +223,7 @@ class HomeScreen extends StatelessWidget {
                   },
                 ),
                 SizedBox(height: 20),
-                gradientButton(
+                flatButton(
                   'Car\nMaintenance',
                       () {
                     Navigator.of(context).push(
@@ -237,7 +232,7 @@ class HomeScreen extends StatelessWidget {
                   },
                 ),
                 SizedBox(height: 20),
-                gradientButton(
+                flatButton(
                   'Car Brand',
                       () {
                     Navigator.of(context).push(

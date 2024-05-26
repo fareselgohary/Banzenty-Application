@@ -103,29 +103,32 @@ class _SecondPageState extends State<SecondPage> {
         backgroundColor: Colors.red,
         child: ListView(
           children: [
-            Row(
-              children: [
-                Image.asset("images/banzenty.png", width: 100, height: 100),
-              ],
+            DrawerHeader(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset("images/banzenty.png", width: 80, height: 80),
+                ],
+              ),
             ),
-
             ListTile(
               title: Text(
                 "Calculate Fuel",
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 25,
+                  fontSize: screenWidth * 0.05,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               leading: Icon(
                 Icons.calculate,
-                size: 45,
+                size: screenWidth * 0.08,
                 color: Colors.white,
               ),
               onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => calc()));
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => calc()),
+                );
               },
             ),
             ListTile(
@@ -133,18 +136,19 @@ class _SecondPageState extends State<SecondPage> {
                 "Nearest Gas Station",
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 25,
+                  fontSize: screenWidth * 0.05,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               leading: Icon(
                 Icons.ev_station,
-                size: 45,
+                size: screenWidth * 0.08,
                 color: Colors.white,
               ),
               onTap: () {
                 Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => NearestGasStation()));
+                  MaterialPageRoute(builder: (context) => NearestGasStation()),
+                );
               },
             ),
             ListTile(
@@ -152,18 +156,19 @@ class _SecondPageState extends State<SecondPage> {
                 "Maintenance",
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 25,
+                  fontSize: screenWidth * 0.05,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               leading: Icon(
                 Icons.settings,
-                size: 45,
+                size: screenWidth * 0.08,
                 color: Colors.white,
               ),
               onTap: () {
                 Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => CarMaintenance()));
+                  MaterialPageRoute(builder: (context) => CarMaintenance()),
+                );
               },
             ),
             ListTile(
@@ -171,18 +176,19 @@ class _SecondPageState extends State<SecondPage> {
                 "Car Brand",
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 25,
+                  fontSize: screenWidth * 0.05,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               leading: Icon(
                 Icons.car_repair,
-                size: 45,
+                size: screenWidth * 0.08,
                 color: Colors.white,
               ),
               onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => ObjectDetectionScreen()));
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => ObjectDetectionScreen()),
+                );
               },
             ),
             ListTile(
@@ -190,19 +196,20 @@ class _SecondPageState extends State<SecondPage> {
                 "Logout",
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 25,
+                  fontSize: screenWidth * 0.05,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               leading: Icon(
                 Icons.logout,
-                size: 45,
+                size: screenWidth * 0.08,
                 color: Colors.white,
               ),
               onTap: () async {
                 await FirebaseAuth.instance.signOut();
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Login()));
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => Login()),
+                );
               },
             ),
           ],

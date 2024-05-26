@@ -118,94 +118,112 @@ class _ObjectDetectionScreenState extends State<ObjectDetectionScreen> {
         child: ListView(
           children: [
             DrawerHeader(
-              child: Image.asset("images/banzenty.png", width: screenWidth * 0.25, height: screenWidth * 0.25),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset("images/banzenty.png", width: 80, height: 80),
+                ],
+              ),
             ),
             ListTile(
               title: Text(
                 "Calculate Fuel",
                 style: TextStyle(
-                    color: Colors.white,
-                    fontSize: screenWidth * 0.045,
-                    fontWeight: FontWeight.bold),
+                  color: Colors.white,
+                  fontSize: screenWidth * 0.05,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               leading: Icon(
                 Icons.calculate,
-                size: screenWidth * 0.07,
+                size: screenWidth * 0.08,
                 color: Colors.white,
               ),
-              onTap: ()  {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>calc()));
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => calc()),
+                );
               },
             ),
             ListTile(
               title: Text(
                 "Nearest Gas Station",
                 style: TextStyle(
-                    color: Colors.white,
-                    fontSize: screenWidth * 0.045,
-                    fontWeight: FontWeight.bold),
+                  color: Colors.white,
+                  fontSize: screenWidth * 0.05,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               leading: Icon(
                 Icons.ev_station,
-                size: screenWidth * 0.07,
+                size: screenWidth * 0.08,
                 color: Colors.white,
               ),
-              onTap: ()  {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>NearestGasStation()));
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => NearestGasStation()),
+                );
               },
             ),
             ListTile(
               title: Text(
                 "Maintenance",
                 style: TextStyle(
-                    color: Colors.white,
-                    fontSize: screenWidth * 0.045,
-                    fontWeight: FontWeight.bold),
+                  color: Colors.white,
+                  fontSize: screenWidth * 0.05,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               leading: Icon(
                 Icons.settings,
-                size: screenWidth * 0.07,
+                size: screenWidth * 0.08,
                 color: Colors.white,
               ),
-              onTap: ()  {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CarMaintenance()));
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => CarMaintenance()),
+                );
               },
             ),
             ListTile(
               title: Text(
                 "Car Brand",
                 style: TextStyle(
-                    color: Colors.white,
-                    fontSize: screenWidth * 0.045,
-                    fontWeight: FontWeight.bold),
+                  color: Colors.white,
+                  fontSize: screenWidth * 0.05,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               leading: Icon(
                 Icons.car_repair,
-                size: screenWidth * 0.07,
+                size: screenWidth * 0.08,
                 color: Colors.white,
               ),
               onTap: () {
                 Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => ObjectDetectionScreen()));
+                  MaterialPageRoute(builder: (context) => ObjectDetectionScreen()),
+                );
               },
             ),
             ListTile(
               title: Text(
                 "Logout",
                 style: TextStyle(
-                    color: Colors.white,
-                    fontSize: screenWidth * 0.045,
-                    fontWeight: FontWeight.bold),
+                  color: Colors.white,
+                  fontSize: screenWidth * 0.05,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               leading: Icon(
                 Icons.logout,
-                size: screenWidth * 0.07,
+                size: screenWidth * 0.08,
                 color: Colors.white,
               ),
               onTap: () async {
                 await FirebaseAuth.instance.signOut();
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Login()));
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => Login()),
+                );
               },
             ),
           ],
@@ -231,7 +249,7 @@ class _ObjectDetectionScreenState extends State<ObjectDetectionScreen> {
             ElevatedButton(
               onPressed: _pickImage,
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.black54, // لون أزرق غامق
+                backgroundColor: Color(0xFF8AA29E),
                 padding: buttonPadding,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15),

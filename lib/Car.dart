@@ -89,97 +89,113 @@ class _CarMaintenanceState extends State<CarMaintenance> {
         backgroundColor: Colors.red,
         child: ListView(
           children: [
-            Row(
-              children: [
-                Image.asset("images/banzenty.png", width: 100, height: 100),
-              ],
+            DrawerHeader(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset("images/banzenty.png", width: 80, height: 80),
+                ],
+              ),
             ),
             ListTile(
               title: Text(
                 "Calculate Fuel",
                 style: TextStyle(
-                    color: Colors.white,
-                    fontSize: drawerTextSize,
-                    fontWeight: FontWeight.bold),
+                  color: Colors.white,
+                  fontSize: screenWidth * 0.05,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               leading: Icon(
                 Icons.calculate,
-                size: iconSize,
+                size: screenWidth * 0.08,
                 color: Colors.white,
               ),
-              onTap: ()  {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>calc()));
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => calc()),
+                );
               },
             ),
             ListTile(
               title: Text(
                 "Nearest Gas Station",
                 style: TextStyle(
-                    color: Colors.white,
-                    fontSize: drawerTextSize,
-                    fontWeight: FontWeight.bold),
+                  color: Colors.white,
+                  fontSize: screenWidth * 0.05,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               leading: Icon(
                 Icons.ev_station,
-                size: iconSize,
+                size: screenWidth * 0.08,
                 color: Colors.white,
               ),
-              onTap: ()  {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>NearestGasStation()));
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => NearestGasStation()),
+                );
               },
             ),
             ListTile(
               title: Text(
                 "Maintenance",
                 style: TextStyle(
-                    color: Colors.white,
-                    fontSize: drawerTextSize,
-                    fontWeight: FontWeight.bold),
+                  color: Colors.white,
+                  fontSize: screenWidth * 0.05,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               leading: Icon(
                 Icons.settings,
-                size: iconSize,
+                size: screenWidth * 0.08,
                 color: Colors.white,
               ),
-              onTap: ()  {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CarMaintenance()));
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => CarMaintenance()),
+                );
               },
             ),
             ListTile(
               title: Text(
                 "Car Brand",
                 style: TextStyle(
-                    color: Colors.white,
-                    fontSize: drawerTextSize,
-                    fontWeight: FontWeight.bold),
+                  color: Colors.white,
+                  fontSize: screenWidth * 0.05,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               leading: Icon(
                 Icons.car_repair,
-                size: iconSize,
+                size: screenWidth * 0.08,
                 color: Colors.white,
               ),
               onTap: () {
                 Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => ObjectDetectionScreen()));
+                  MaterialPageRoute(builder: (context) => ObjectDetectionScreen()),
+                );
               },
             ),
             ListTile(
               title: Text(
                 "Logout",
                 style: TextStyle(
-                    color: Colors.white,
-                    fontSize: drawerTextSize,
-                    fontWeight: FontWeight.bold),
+                  color: Colors.white,
+                  fontSize: screenWidth * 0.05,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               leading: Icon(
                 Icons.logout,
-                size: iconSize,
+                size: screenWidth * 0.08,
                 color: Colors.white,
               ),
               onTap: () async {
                 await FirebaseAuth.instance.signOut();
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Login()));
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => Login()),
+                );
               },
             ),
           ],

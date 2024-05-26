@@ -14,7 +14,6 @@ import 'package:projj/Car.dart';
 class calc extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Get the size of the screen
     final screenSize = MediaQuery.of(context).size;
     final screenWidth = screenSize.width;
     final screenHeight = screenSize.height;
@@ -25,26 +24,23 @@ class calc extends StatelessWidget {
     );
     final buttonTextSize = screenWidth * 0.06;
 
-    final gradientDecoration = BoxDecoration(
-      gradient: LinearGradient(
-        colors: [Color(0xFF1E1E2C), Color(0xFF2A2A40)],
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-      ),
-      borderRadius: BorderRadius.circular(15),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.black26,
-          blurRadius: 5,
-          offset: Offset(0, 5),
-        ),
-      ],
-    );
+    // New button color
+    final buttonColor = Color(0xFF8AA29E);
 
-    Widget gradientButton(String text, VoidCallback onPressed) {
+    Widget flatButton(String text, VoidCallback onPressed) {
       return Container(
         margin: EdgeInsets.symmetric(vertical: screenHeight * 0.02),
-        decoration: gradientDecoration,
+        decoration: BoxDecoration(
+          color: buttonColor,
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 5,
+              offset: Offset(0, 5),
+            ),
+          ],
+        ),
         child: ElevatedButton(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
@@ -190,13 +186,13 @@ class calc extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              gradientButton(
+              flatButton(
                 '95',
                     () {
                   Navigator.of(context).push(MaterialPageRoute(builder: (context) => SecondPage()));
                 },
               ),
-              gradientButton(
+              flatButton(
                 '92',
                     () {
                   Navigator.of(context).push(MaterialPageRoute(builder: (context) => FirstPage()));
